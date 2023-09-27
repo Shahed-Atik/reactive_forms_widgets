@@ -166,68 +166,71 @@ class ReactivePhoneFormField<T> extends ReactiveFormField<T, PhoneNumber> {
 
             state._setFocusNode(focusNode);
 
-            return PhoneFormField(
-              countryCodeStyle: countryCodeStyle,
-              focusNode: state.focusNode,
-              controller: state._textController,
-              shouldFormat: shouldFormat,
-              onChanged: (value) {
-                field.didChange(value);
-                onChanged?.call(field.control);
-              },
-              autofillHints: autofillHints,
-              autofocus: autofocus,
-              enabled: field.control.enabled,
-              showFlagInInput: showFlagInInput,
-              countrySelectorNavigator: countrySelectorNavigator,
-              onSaved: onSaved,
-              defaultCountry: defaultCountry,
-              decoration: effectiveDecoration.copyWith(
-                errorText: field.errorText,
+            return Directionality(
+              textDirection: TextDirection.ltr,
+              child: PhoneFormField(
+                countryCodeStyle: countryCodeStyle,
+                focusNode: state.focusNode,
+                controller: state._textController,
+                shouldFormat: shouldFormat,
+                onChanged: (value) {
+                  field.didChange(value);
+                  onChanged?.call(field.control);
+                },
+                autofillHints: autofillHints,
+                autofocus: autofocus,
                 enabled: field.control.enabled,
+                showFlagInInput: showFlagInInput,
+                countrySelectorNavigator: countrySelectorNavigator,
+                onSaved: onSaved,
+                defaultCountry: defaultCountry,
+                decoration: effectiveDecoration.copyWith(
+                  errorText: field.errorText,
+                  enabled: field.control.enabled,
+                ),
+                cursorColor: cursorColor,
+                autovalidateMode: AutovalidateMode.disabled,
+                flagSize: flagSize,
+                onEditingComplete: onEditingComplete,
+                restorationId: restorationId,
+                keyboardType: keyboardType,
+                textInputAction: textInputAction,
+                style: style,
+                strutStyle: strutStyle,
+                textAlign: textAlign,
+                textAlignVertical: textAlignVertical,
+                showCursor: showCursor,
+                obscureText: obscureText,
+                autocorrect: autocorrect,
+                smartDashesType: smartDashesType ??
+                    (obscureText
+                        ? SmartDashesType.disabled
+                        : SmartDashesType.enabled),
+                smartQuotesType: smartQuotesType ??
+                    (obscureText
+                        ? SmartQuotesType.disabled
+                        : SmartQuotesType.enabled),
+                enableSuggestions: enableSuggestions,
+                onSubmitted: onSubmitted != null ? (_) => onSubmitted() : null,
+                inputFormatters: inputFormatters,
+                cursorWidth: cursorWidth,
+                cursorHeight: cursorHeight,
+                cursorRadius: cursorRadius,
+                scrollPadding: scrollPadding,
+                scrollPhysics: scrollPhysics,
+                keyboardAppearance: keyboardAppearance,
+                enableInteractiveSelection: enableInteractiveSelection,
+                mouseCursor: mouseCursor,
+                obscuringCharacter: obscuringCharacter,
+                onAppPrivateCommand: onAppPrivateCommand,
+                scrollController: scrollController,
+                selectionControls: selectionControls,
+                selectionHeightStyle: selectionHeightStyle,
+                selectionWidthStyle: selectionWidthStyle,
+                enableIMEPersonalizedLearning: enableIMEPersonalizedLearning,
+                isCountrySelectionEnabled: isCountrySelectionEnabled,
+                isCountryChipPersistent: isCountryChipPersistent,
               ),
-              cursorColor: cursorColor,
-              autovalidateMode: AutovalidateMode.disabled,
-              flagSize: flagSize,
-              onEditingComplete: onEditingComplete,
-              restorationId: restorationId,
-              keyboardType: keyboardType,
-              textInputAction: textInputAction,
-              style: style,
-              strutStyle: strutStyle,
-              textAlign: textAlign,
-              textAlignVertical: textAlignVertical,
-              showCursor: showCursor,
-              obscureText: obscureText,
-              autocorrect: autocorrect,
-              smartDashesType: smartDashesType ??
-                  (obscureText
-                      ? SmartDashesType.disabled
-                      : SmartDashesType.enabled),
-              smartQuotesType: smartQuotesType ??
-                  (obscureText
-                      ? SmartQuotesType.disabled
-                      : SmartQuotesType.enabled),
-              enableSuggestions: enableSuggestions,
-              onSubmitted: onSubmitted != null ? (_) => onSubmitted() : null,
-              inputFormatters: inputFormatters,
-              cursorWidth: cursorWidth,
-              cursorHeight: cursorHeight,
-              cursorRadius: cursorRadius,
-              scrollPadding: scrollPadding,
-              scrollPhysics: scrollPhysics,
-              keyboardAppearance: keyboardAppearance,
-              enableInteractiveSelection: enableInteractiveSelection,
-              mouseCursor: mouseCursor,
-              obscuringCharacter: obscuringCharacter,
-              onAppPrivateCommand: onAppPrivateCommand,
-              scrollController: scrollController,
-              selectionControls: selectionControls,
-              selectionHeightStyle: selectionHeightStyle,
-              selectionWidthStyle: selectionWidthStyle,
-              enableIMEPersonalizedLearning: enableIMEPersonalizedLearning,
-              isCountrySelectionEnabled: isCountrySelectionEnabled,
-              isCountryChipPersistent: isCountryChipPersistent,
             );
           },
         );
